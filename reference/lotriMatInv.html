@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • lotri</title>
+<title>Converts a matrix into a list of block matrices — lotriMatInv • lotri</title>
 
 
 <!-- jquery -->
@@ -39,7 +39,8 @@
 
 
 
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="Converts a matrix into a list of block matrices — lotriMatInv" />
+<meta property="og:description" content="Converts a matrix into a list of block matrices" />
 
 
 
@@ -58,7 +59,7 @@
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -120,66 +121,86 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+    <h1>Converts a matrix into a list of block matrices</h1>
+    <small class="dont-index">Source: <a href='https://github.com/nlmixrdevelopment/lotri/blob/master/R/lotriMatInv.R'><code>R/lotriMatInv.R</code></a></small>
+    <div class="hidden name"><code>lotriMatInv.Rd</code></div>
     </div>
 
-    <table class="ref-index">
+    <div class="ref-description">
+    <p>Converts a matrix into a list of block matrices</p>
+    </div>
 
-    <colgroup>
-      
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
+    <pre class="usage"><span class='fu'>lotriMatInv</span><span class='op'>(</span><span class='va'>mat</span><span class='op'>)</span></pre>
 
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      
-      
-    </tbody><tbody>
-      
-      
-      <tr>
-        
-        <td>
-          <p><code><a href="as.lotri.html">as.lotri()</a></code> </p>
-        </td>
-        <td><p>As lower triangular matrix</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="lotri.html">lotri()</a></code> </p>
-        </td>
-        <td><p>Easily Specify block-diagonal matrices with lower triangular info</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="lotriMat.html">lotriMat()</a></code> </p>
-        </td>
-        <td><p>Create a matrix from a list of matrices</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="lotriMatInv.html">lotriMatInv()</a></code> </p>
-        </td>
-        <td><p>Converts a matrix into a list of block matrices</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="lotriSep.html">lotriSep()</a></code> </p>
-        </td>
-        <td><p>Separate a lotri matrix into above and below lotri matrices</p></td>
-      </tr>
-    </tbody>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>mat</th>
+      <td><p>Matrix to convert to a list of block matrices</p></td>
+    </tr>
     </table>
-  </div>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>A list of block matrixes</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>This is the inverse of `lotriMat()`</p>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Matthew Fidler</p>
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'>
+<span class='co'># Create a block matrix using `lotri()`</span>
+<span class='va'>mat</span> <span class='op'>&lt;-</span> <span class='fu'><a href='lotri.html'>lotri</a></span><span class='op'>(</span><span class='op'>{</span>
+   <span class='va'>a</span><span class='op'>+</span><span class='va'>b</span> <span class='op'>~</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>,
+           <span class='fl'>0.5</span>, <span class='fl'>1</span><span class='op'>)</span>
+   <span class='va'>c</span> <span class='op'>~</span> <span class='fl'>1</span>
+   <span class='va'>d</span> <span class='op'>+</span><span class='va'>e</span> <span class='op'>~</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>,
+            <span class='fl'>0.5</span>, <span class='fl'>1</span><span class='op'>)</span>
+<span class='op'>}</span><span class='op'>)</span>
+
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>mat</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;     a   b c   d   e
+#&gt; a 1.0 0.5 0 0.0 0.0
+#&gt; b 0.5 1.0 0 0.0 0.0
+#&gt; c 0.0 0.0 1 0.0 0.0
+#&gt; d 0.0 0.0 0 1.0 0.5
+#&gt; e 0.0 0.0 0 0.5 1.0</div><div class='input'>
+<span class='co'># now convert t a list of matrices</span>
+
+<span class='va'>mat2</span> <span class='op'>&lt;-</span> <span class='fu'>lotriMatInv</span><span class='op'>(</span><span class='va'>mat</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>mat2</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [[1]]
+#&gt;     a   b
+#&gt; a 1.0 0.5
+#&gt; b 0.5 1.0
+#&gt; 
+#&gt; [[2]]
+#&gt;   c
+#&gt; c 1
+#&gt; 
+#&gt; [[3]]
+#&gt;     d   e
+#&gt; d 1.0 0.5
+#&gt; e 0.5 1.0
+#&gt; </div><div class='input'>
+<span class='co'># Of course you can convert it back to a full matrix:</span>
+
+<span class='va'>mat3</span> <span class='op'>&lt;-</span> <span class='fu'><a href='lotriMat.html'>lotriMat</a></span><span class='op'>(</span><span class='va'>mat2</span><span class='op'>)</span>
+
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>mat3</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;     a   b c   d   e
+#&gt; a 1.0 0.5 0 0.0 0.0
+#&gt; b 0.5 1.0 0 0.0 0.0
+#&gt; c 0.0 0.0 1 0.0 0.0
+#&gt; d 0.0 0.0 0 1.0 0.5
+#&gt; e 0.0 0.0 0 0.5 1.0</div></pre>
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
       <h2 data-toc-skip>Contents</h2>

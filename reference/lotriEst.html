@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • lotri</title>
+<title>Extract or remove lotri estimate data frame from lotri object — lotriEst • lotri</title>
 
 
 <!-- jquery -->
@@ -39,7 +39,8 @@
 
 
 
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="Extract or remove lotri estimate data frame from lotri object — lotriEst" />
+<meta property="og:description" content="Extract or remove lotri estimate data frame from lotri object" />
 
 
 
@@ -58,7 +59,7 @@
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -120,72 +121,63 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+    <h1>Extract or remove lotri estimate data frame from lotri object</h1>
+    <small class="dont-index">Source: <a href='https://github.com/nlmixrdevelopment/lotri/blob/master/R/thetaEst.R'><code>R/thetaEst.R</code></a></small>
+    <div class="hidden name"><code>lotriEst.Rd</code></div>
     </div>
 
-    <table class="ref-index">
+    <div class="ref-description">
+    <p>Extract or remove lotri estimate data frame from lotri object</p>
+    </div>
 
-    <colgroup>
-      
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
+    <pre class="usage"><span class='fu'>lotriEst</span><span class='op'>(</span><span class='va'>x</span>, drop <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
 
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      
-      
-    </tbody><tbody>
-      
-      
-      <tr>
-        
-        <td>
-          <p><code><a href="as.lotri.html">as.lotri()</a></code> </p>
-        </td>
-        <td><p>As lower triangular matrix</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="lotri.html">lotri()</a></code> </p>
-        </td>
-        <td><p>Easily Specify block-diagonal matrices with lower triangular info</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="lotriEst.html">lotriEst()</a></code> </p>
-        </td>
-        <td><p>Extract or remove lotri estimate data frame from lotri object</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="lotriMat.html">lotriMat()</a></code> </p>
-        </td>
-        <td><p>Create a matrix from a list of matrices</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="lotriMatInv.html">lotriMatInv()</a></code> </p>
-        </td>
-        <td><p>Converts a matrix into a list of block matrices</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="lotriSep.html">lotriSep()</a></code> </p>
-        </td>
-        <td><p>Separate a lotri matrix into above and below lotri matrices</p></td>
-      </tr>
-    </tbody>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>x</th>
+      <td><p>lotri object</p></td>
+    </tr>
+    <tr>
+      <th>drop</th>
+      <td><p>boolean indicating if the lotri estimate should be dropped</p></td>
+    </tr>
     </table>
-  </div>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>data frame with estimates or NULL if there is not a data.frame attached</p>
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'>
+<span class='va'>fix1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='lotri.html'>lotri</a></span><span class='op'>(</span><span class='op'>{</span>
+   <span class='va'>a</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>1</span><span class='op'>)</span>; <span class='fu'>backTransform</span><span class='op'>(</span><span class='st'>"exp"</span><span class='op'>)</span>; <span class='fu'>label</span><span class='op'>(</span><span class='st'>"a label"</span><span class='op'>)</span>
+   <span class='va'>b</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>1</span>, <span class='fl'>2</span><span class='op'>)</span>
+   <span class='va'>c</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/utils/fix.html'>fix</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span>
+   <span class='va'>d</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/utils/fix.html'>fix</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>1</span>, <span class='fl'>2</span><span class='op'>)</span>
+   <span class='va'>e</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>1</span>, <span class='fl'>2</span>, <span class='va'>fixed</span><span class='op'>)</span>
+   <span class='va'>f</span><span class='op'>+</span><span class='va'>g</span> <span class='op'>~</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>,
+           <span class='fl'>0.5</span>, <span class='fl'>1</span><span class='op'>)</span>
+ <span class='op'>}</span><span class='op'>)</span>
+
+<span class='co'># Extract the attached lotri estimate data frame</span>
+<span class='fu'>lotriEst</span><span class='op'>(</span><span class='va'>fix1</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;   name lower est upper   fix   label backTransform
+#&gt; 1    a     0   1   Inf FALSE a label           exp
+#&gt; 2    b     0   1     2 FALSE    &lt;NA&gt;          &lt;NA&gt;
+#&gt; 3    c  -Inf   1   Inf  TRUE    &lt;NA&gt;          &lt;NA&gt;
+#&gt; 4    d     0   1     2  TRUE    &lt;NA&gt;          &lt;NA&gt;
+#&gt; 5    e     0   1     2  TRUE    &lt;NA&gt;          &lt;NA&gt;</div><div class='input'>
+<span class='co'># Remove the attached lotri estimate data frame</span>
+<span class='fu'>lotriEst</span><span class='op'>(</span><span class='va'>fix1</span>, drop<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;     f   g
+#&gt; f 1.0 0.5
+#&gt; g 0.5 1.0</div><div class='input'>
+</div></pre>
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
       <h2 data-toc-skip>Contents</h2>

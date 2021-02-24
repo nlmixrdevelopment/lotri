@@ -6,6 +6,12 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>A Simple Way to Specify Symmetric, Block Diagonal Matrices • lotri</title>
+<!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="apple-touch-icon.png">
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="apple-touch-icon-60x60.png">
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="bootstrap-toc.css">
 <script src="bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
@@ -16,6 +22,7 @@
   used for covariance matrices).  This is based on the domain specific language implemented
   in nlmixr but expanded to create matrices in R generally instead of specifying parts of matrices
   to estimate.">
+<meta property="og:image" content="/logo.png">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -86,9 +93,10 @@
   <div class="contents col-md-9">
 
 
-<div id="lotri" class="section level1">
+<div id="lotri-" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
-<a href="#lotri" class="anchor"></a>lotri</h1></div>
+<a href="#lotri-" class="anchor"></a>lotri <img src="reference/figures/logo.png" align="right" height="139">
+</h1></div>
 <p>The goal of lotri is to easily specify block-diagonal matrices with (lo)wer (tri)angular matrices. Its as if you have won the (badly spelled) lotri (or lottery).</p>
 <p>This was made to allow people (like me) to specify lower triangular matrices similar to the domain specific language implemented in <code>nlmixr</code>. Originally I had it included in <code>RxODE</code>, but thought it may have more general applicability, so I separated it into a new package.</p>
 <div id="installation" class="section level2">
@@ -275,9 +283,9 @@
 
 <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">mb</span><span class="op">)</span>
 <span class="co">#&gt; Unit: microseconds</span>
-<span class="co">#&gt;                expr     min      lq      mean  median       uq      max neval</span>
-<span class="co">#&gt;      matf(testList) 463.599 491.021 598.57232 521.231 585.1135 5710.686   100</span>
-<span class="co">#&gt;  lotriMat(testList)   1.297   1.646   2.56874   2.732   3.0105    7.734   100</span>
+<span class="co">#&gt;                expr     min       lq      mean  median       uq      max neval</span>
+<span class="co">#&gt;      matf(testList) 459.609 471.7575 543.02145 479.706 516.7105 4697.318   100</span>
+<span class="co">#&gt;  lotriMat(testList)   2.280   2.8195   4.21159   3.303   4.6460   46.721   100</span>
 
 <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html">autoplot</a></span><span class="op">(</span><span class="va">mb</span><span class="op">)</span>
 <span class="co">#&gt; Coordinate system already present. Adding new coordinate system, which will replace the existing one.</span></code></pre></div>
@@ -321,10 +329,10 @@
 <span class="va">mb</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/microbenchmark/man/microbenchmark.html">microbenchmark</a></span><span class="op">(</span><span class="fu">matf</span><span class="op">(</span><span class="va">testList</span><span class="op">)</span>,<span class="fu"><a href="reference/lotriMat.html">lotriMat</a></span><span class="op">(</span><span class="va">testList</span><span class="op">)</span><span class="op">)</span>
 
 <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">mb</span><span class="op">)</span>
-<span class="co">#&gt; Unit: nanoseconds</span>
-<span class="co">#&gt;                expr    min       lq      mean   median       uq     max neval</span>
-<span class="co">#&gt;      matf(testList) 448951 454581.5 535816.43 463802.5 528361.0 2228159   100</span>
-<span class="co">#&gt;  lotriMat(testList)    989   1281.5   2690.28   2396.0   2731.5   26770   100</span>
+<span class="co">#&gt; Unit: microseconds</span>
+<span class="co">#&gt;                expr     min       lq      mean   median       uq      max neval</span>
+<span class="co">#&gt;      matf(testList) 453.898 464.4790 511.40373 489.6425 517.6250 2004.861   100</span>
+<span class="co">#&gt;  lotriMat(testList)   2.254   2.7245   4.07269   4.0970   4.5285   11.251   100</span>
 
 <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html">autoplot</a></span><span class="op">(</span><span class="va">mb</span><span class="op">)</span>
 <span class="co">#&gt; Coordinate system already present. Adding new coordinate system, which will replace the existing one.</span></code></pre></div>

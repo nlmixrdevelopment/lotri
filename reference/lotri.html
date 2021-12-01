@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">lotri</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.0</span>
       </span>
     </div>
 
@@ -188,126 +188,139 @@ implemented.</p></td>
     <p>Matthew L Fidler</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>
-<span class='co'>## A few ways to specify the same matrix</span>
-<span class='fu'>lotri</span><span class='op'>(</span><span class='op'>{</span><span class='va'>et2</span> <span class='op'>+</span> <span class='va'>et3</span> <span class='op'>+</span> <span class='va'>et4</span> <span class='op'>~</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>40</span>,
-                           <span class='fl'>0.1</span>, <span class='fl'>20</span>,
-                           <span class='fl'>0.1</span>, <span class='fl'>0.1</span>, <span class='fl'>30</span><span class='op'>)</span><span class='op'>}</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;      et2  et3  et4
-#&gt; et2 40.0  0.1  0.1
-#&gt; et3  0.1 20.0  0.1
-#&gt; et4  0.1  0.1 30.0</div><div class='input'>
-<span class='co'>## You  do not need to enclose in {}</span>
-<span class='fu'>lotri</span><span class='op'>(</span><span class='va'>et2</span> <span class='op'>+</span> <span class='va'>et3</span> <span class='op'>+</span> <span class='va'>et4</span> <span class='op'>~</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>40</span>,
-                          <span class='fl'>0.1</span>, <span class='fl'>20</span>,
-                          <span class='fl'>0.1</span>, <span class='fl'>0.1</span>, <span class='fl'>30</span><span class='op'>)</span>,
-          <span class='va'>et5</span> <span class='op'>~</span> <span class='fl'>6</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;      et2  et3  et4 et5
-#&gt; et2 40.0  0.1  0.1   0
-#&gt; et3  0.1 20.0  0.1   0
-#&gt; et4  0.1  0.1 30.0   0
-#&gt; et5  0.0  0.0  0.0   6</div><div class='input'><span class='co'>## But if you do enclose in {}, you can use</span>
-<span class='co'>## multi-line matrix specifications:</span>
-
-<span class='fu'>lotri</span><span class='op'>(</span><span class='op'>{</span><span class='va'>et2</span> <span class='op'>+</span> <span class='va'>et3</span> <span class='op'>+</span> <span class='va'>et4</span> <span class='op'>~</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>40</span>,
-                           <span class='fl'>0.1</span>, <span class='fl'>20</span>,
-                           <span class='fl'>0.1</span>, <span class='fl'>0.1</span>, <span class='fl'>30</span><span class='op'>)</span>
-          <span class='va'>et5</span> <span class='op'>~</span> <span class='fl'>6</span>
-          <span class='op'>}</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;      et2  et3  et4 et5
-#&gt; et2 40.0  0.1  0.1   0
-#&gt; et3  0.1 20.0  0.1   0
-#&gt; et4  0.1  0.1 30.0   0
-#&gt; et5  0.0  0.0  0.0   6</div><div class='input'>
-<span class='co'>## You can also add lists or actual R matrices as in this example:</span>
-<span class='fu'>lotri</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='va'>et2</span> <span class='op'>+</span> <span class='va'>et3</span> <span class='op'>+</span> <span class='va'>et4</span> <span class='op'>~</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>40</span>,
-                               <span class='fl'>0.1</span>, <span class='fl'>20</span>,
-                               <span class='fl'>0.1</span>, <span class='fl'>0.1</span>, <span class='fl'>30</span><span class='op'>)</span>,
-              <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span><span class='op'>(</span><span class='fl'>1</span>,dimnames<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='st'>"et5"</span>,<span class='st'>"et5"</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;      et2  et3  et4 et5
-#&gt; et2 40.0  0.1  0.1   0
-#&gt; et3  0.1 20.0  0.1   0
-#&gt; et4  0.1  0.1 30.0   0
-#&gt; et5  0.0  0.0  0.0   1</div><div class='input'>
-<span class='co'>## Overall this is a flexible way to specify symmetric block</span>
-<span class='co'>## diagonal matrices.</span>
-
-<span class='co'>## For RxODE, you may also condition based on different levels of</span>
-<span class='co'>## nesting with lotri;  Here is an example:</span>
-
-<span class='va'>mat</span> <span class='op'>&lt;-</span> <span class='fu'>lotri</span><span class='op'>(</span><span class='fu'>lotri</span><span class='op'>(</span><span class='va'>iov.Ka</span> <span class='op'>~</span> <span class='fl'>0.5</span>,
-                    <span class='va'>iov.Cl</span> <span class='op'>~</span> <span class='fl'>0.6</span><span class='op'>)</span>,
-              <span class='fu'>lotri</span><span class='op'>(</span><span class='va'>occ.Ka</span> <span class='op'>~</span> <span class='fl'>0.5</span>,
-                    <span class='va'>occ.Cl</span> <span class='op'>~</span> <span class='fl'>0.6</span><span class='op'>)</span> <span class='op'>|</span> <span class='fu'>occ</span><span class='op'>(</span>lower<span class='op'>=</span><span class='fl'>4</span>,nu<span class='op'>=</span><span class='fl'>3</span><span class='op'>)</span><span class='op'>)</span>
-
-<span class='va'>mat</span>
-</div><div class='output co'>#&gt; [[1]]
-#&gt;        iov.Ka iov.Cl
-#&gt; iov.Ka    0.5    0.0
-#&gt; iov.Cl    0.0    0.6
-#&gt; 
-#&gt; $occ
-#&gt;        occ.Ka occ.Cl
-#&gt; occ.Ka    0.5    0.0
-#&gt; occ.Cl    0.0    0.6
-#&gt; 
-#&gt; Properties: lower, nu </div><div class='input'>
-<span class='co'>## you may access features of the matrix simply by `$` that is</span>
-
-<span class='va'>mat</span><span class='op'>$</span><span class='va'>lower</span> <span class='co'># Shows the lower bound for each condition</span>
-</div><div class='output co'>#&gt; [[1]]
-#&gt; iov.Ka iov.Cl 
-#&gt;   -Inf   -Inf 
-#&gt; 
-#&gt; $occ
-#&gt; occ.Ka occ.Cl 
-#&gt;      4      4 
-#&gt; </div><div class='input'>
-<span class='va'>mat</span><span class='op'>$</span><span class='va'>lower</span><span class='op'>$</span><span class='va'>occ</span> <span class='co'># shows the lower bound for the occasion variable</span>
-</div><div class='output co'>#&gt; occ.Ka occ.Cl 
-#&gt;      4      4 </div><div class='input'>
-<span class='co'>## Note that `lower` fills in defaults for parameters.  This is true</span>
-<span class='co'>## for `upper` true;  In fact when accessing this the defaults</span>
-<span class='co'>## are put into the list</span>
-
-<span class='va'>mat</span><span class='op'>$</span><span class='va'>upper</span>
-</div><div class='output co'>#&gt; [[1]]
-#&gt; numeric(0)
-#&gt; 
-#&gt; $occ
-#&gt; occ.Ka occ.Cl 
-#&gt;    Inf    Inf 
-#&gt; </div><div class='input'>
-<span class='co'>## However all other values return NULL if they are not present like</span>
-
-<span class='va'>mat</span><span class='op'>$</span><span class='va'>lotri</span>
-</div><div class='output co'>#&gt; NULL</div><div class='input'>
-<span class='co'>## And values that are specified once are only returned on one list:</span>
-
-<span class='va'>mat</span><span class='op'>$</span><span class='va'>nu</span>
-</div><div class='output co'>#&gt; $occ
-#&gt; [1] 3
-#&gt; </div><div class='input'>
-<span class='va'>mat</span><span class='op'>$</span><span class='va'>nu</span><span class='op'>$</span><span class='va'>occ</span>
-</div><div class='output co'>#&gt; [1] 3</div><div class='input'><span class='va'>mat</span><span class='op'>$</span><span class='va'>nu</span><span class='op'>$</span><span class='va'>id</span>
-</div><div class='output co'>#&gt; NULL</div><div class='input'>
-<span class='co'>## You can also change the default condition with `as.lotri`</span>
-
-<span class='va'>mat</span> <span class='op'>&lt;-</span> <span class='fu'><a href='as.lotri.html'>as.lotri</a></span><span class='op'>(</span><span class='va'>mat</span>, default<span class='op'>=</span><span class='st'>"id"</span><span class='op'>)</span>
-
-<span class='va'>mat</span>
-</div><div class='output co'>#&gt; $id
-#&gt;        iov.Ka iov.Cl
-#&gt; iov.Ka    0.5    0.0
-#&gt; iov.Cl    0.0    0.6
-#&gt; 
-#&gt; $occ
-#&gt;        occ.Ka occ.Cl
-#&gt; occ.Ka    0.5    0.0
-#&gt; occ.Cl    0.0    0.6
-#&gt; 
-#&gt; Properties: lower, nu </div><div class='input'>
-</div></pre>
+    <pre class="examples"><span class='r-in'></span>
+<span class='r-in'><span class='co'>## A few ways to specify the same matrix</span></span>
+<span class='r-in'><span class='fu'>lotri</span><span class='op'>(</span><span class='op'>{</span><span class='va'>et2</span> <span class='op'>+</span> <span class='va'>et3</span> <span class='op'>+</span> <span class='va'>et4</span> <span class='op'>~</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>40</span>,</span>
+<span class='r-in'>                           <span class='fl'>0.1</span>, <span class='fl'>20</span>,</span>
+<span class='r-in'>                           <span class='fl'>0.1</span>, <span class='fl'>0.1</span>, <span class='fl'>30</span><span class='op'>)</span><span class='op'>}</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>      et2  et3  et4</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> et2 40.0  0.1  0.1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> et3  0.1 20.0  0.1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> et4  0.1  0.1 30.0</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'>## You  do not need to enclose in {}</span></span>
+<span class='r-in'><span class='fu'>lotri</span><span class='op'>(</span><span class='va'>et2</span> <span class='op'>+</span> <span class='va'>et3</span> <span class='op'>+</span> <span class='va'>et4</span> <span class='op'>~</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>40</span>,</span>
+<span class='r-in'>                          <span class='fl'>0.1</span>, <span class='fl'>20</span>,</span>
+<span class='r-in'>                          <span class='fl'>0.1</span>, <span class='fl'>0.1</span>, <span class='fl'>30</span><span class='op'>)</span>,</span>
+<span class='r-in'>          <span class='va'>et5</span> <span class='op'>~</span> <span class='fl'>6</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>      et2  et3  et4 et5</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> et2 40.0  0.1  0.1   0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> et3  0.1 20.0  0.1   0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> et4  0.1  0.1 30.0   0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> et5  0.0  0.0  0.0   6</span>
+<span class='r-in'><span class='co'>## But if you do enclose in {}, you can use</span></span>
+<span class='r-in'><span class='co'>## multi-line matrix specifications:</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='fu'>lotri</span><span class='op'>(</span><span class='op'>{</span><span class='va'>et2</span> <span class='op'>+</span> <span class='va'>et3</span> <span class='op'>+</span> <span class='va'>et4</span> <span class='op'>~</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>40</span>,</span>
+<span class='r-in'>                           <span class='fl'>0.1</span>, <span class='fl'>20</span>,</span>
+<span class='r-in'>                           <span class='fl'>0.1</span>, <span class='fl'>0.1</span>, <span class='fl'>30</span><span class='op'>)</span></span>
+<span class='r-in'>          <span class='va'>et5</span> <span class='op'>~</span> <span class='fl'>6</span></span>
+<span class='r-in'>          <span class='op'>}</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>      et2  et3  et4 et5</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> et2 40.0  0.1  0.1   0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> et3  0.1 20.0  0.1   0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> et4  0.1  0.1 30.0   0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> et5  0.0  0.0  0.0   6</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'>## You can also add lists or actual R matrices as in this example:</span></span>
+<span class='r-in'><span class='fu'>lotri</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='va'>et2</span> <span class='op'>+</span> <span class='va'>et3</span> <span class='op'>+</span> <span class='va'>et4</span> <span class='op'>~</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>40</span>,</span>
+<span class='r-in'>                               <span class='fl'>0.1</span>, <span class='fl'>20</span>,</span>
+<span class='r-in'>                               <span class='fl'>0.1</span>, <span class='fl'>0.1</span>, <span class='fl'>30</span><span class='op'>)</span>,</span>
+<span class='r-in'>              <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span><span class='op'>(</span><span class='fl'>1</span>,dimnames<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='st'>"et5"</span>,<span class='st'>"et5"</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>      et2  et3  et4 et5</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> et2 40.0  0.1  0.1   0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> et3  0.1 20.0  0.1   0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> et4  0.1  0.1 30.0   0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> et5  0.0  0.0  0.0   1</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'>## Overall this is a flexible way to specify symmetric block</span></span>
+<span class='r-in'><span class='co'>## diagonal matrices.</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'>## For RxODE, you may also condition based on different levels of</span></span>
+<span class='r-in'><span class='co'>## nesting with lotri;  Here is an example:</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='va'>mat</span> <span class='op'>&lt;-</span> <span class='fu'>lotri</span><span class='op'>(</span><span class='fu'>lotri</span><span class='op'>(</span><span class='va'>iov.Ka</span> <span class='op'>~</span> <span class='fl'>0.5</span>,</span>
+<span class='r-in'>                    <span class='va'>iov.Cl</span> <span class='op'>~</span> <span class='fl'>0.6</span><span class='op'>)</span>,</span>
+<span class='r-in'>              <span class='fu'>lotri</span><span class='op'>(</span><span class='va'>occ.Ka</span> <span class='op'>~</span> <span class='fl'>0.5</span>,</span>
+<span class='r-in'>                    <span class='va'>occ.Cl</span> <span class='op'>~</span> <span class='fl'>0.6</span><span class='op'>)</span> <span class='op'>|</span> <span class='fu'>occ</span><span class='op'>(</span>lower<span class='op'>=</span><span class='fl'>4</span>,nu<span class='op'>=</span><span class='fl'>3</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='va'>mat</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [[1]]</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>        iov.Ka iov.Cl</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> iov.Ka    0.5    0.0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> iov.Cl    0.0    0.6</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> $occ</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>        occ.Ka occ.Cl</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> occ.Ka    0.5    0.0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> occ.Cl    0.0    0.6</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Properties: lower, nu </span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'>## you may access features of the matrix simply by `$` that is</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='va'>mat</span><span class='op'>$</span><span class='va'>lower</span> <span class='co'># Shows the lower bound for each condition</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [[1]]</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> iov.Ka iov.Cl </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   -Inf   -Inf </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> $occ</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> occ.Ka occ.Cl </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>      4      4 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-in'></span>
+<span class='r-in'><span class='va'>mat</span><span class='op'>$</span><span class='va'>lower</span><span class='op'>$</span><span class='va'>occ</span> <span class='co'># shows the lower bound for the occasion variable</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> occ.Ka occ.Cl </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>      4      4 </span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'>## Note that `lower` fills in defaults for parameters.  This is true</span></span>
+<span class='r-in'><span class='co'>## for `upper` true;  In fact when accessing this the defaults</span></span>
+<span class='r-in'><span class='co'>## are put into the list</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='va'>mat</span><span class='op'>$</span><span class='va'>upper</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [[1]]</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> numeric(0)</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> $occ</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> occ.Ka occ.Cl </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    Inf    Inf </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'>## However all other values return NULL if they are not present like</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='va'>mat</span><span class='op'>$</span><span class='va'>lotri</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> NULL</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'>## And values that are specified once are only returned on one list:</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='va'>mat</span><span class='op'>$</span><span class='va'>nu</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> $occ</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] 3</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-in'></span>
+<span class='r-in'><span class='va'>mat</span><span class='op'>$</span><span class='va'>nu</span><span class='op'>$</span><span class='va'>occ</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] 3</span>
+<span class='r-in'><span class='va'>mat</span><span class='op'>$</span><span class='va'>nu</span><span class='op'>$</span><span class='va'>id</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> NULL</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'>## You can also change the default condition with `as.lotri`</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='va'>mat</span> <span class='op'>&lt;-</span> <span class='fu'><a href='as.lotri.html'>as.lotri</a></span><span class='op'>(</span><span class='va'>mat</span>, default<span class='op'>=</span><span class='st'>"id"</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='va'>mat</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> $id</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>        iov.Ka iov.Cl</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> iov.Ka    0.5    0.0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> iov.Cl    0.0    0.6</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> $occ</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>        occ.Ka occ.Cl</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> occ.Ka    0.5    0.0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> occ.Cl    0.0    0.6</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Properties: lower, nu </span>
+<span class='r-in'></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

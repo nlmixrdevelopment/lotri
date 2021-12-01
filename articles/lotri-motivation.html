@@ -38,7 +38,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">lotri</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.0</span>
       </span>
     </div>
 
@@ -92,7 +92,7 @@
       <h1 data-toc-skip>Lotri Motivation</h1>
                         <h4 class="author">Matthew Fidler</h4>
             
-            <h4 class="date">2021-04-18</h4>
+            <h4 class="date">2021-12-01</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/nlmixrdevelopment/lotri/blob/master/vignettes/lotri-motivation.Rmd"><code>vignettes/lotri-motivation.Rmd</code></a></small>
       <div class="hidden name"><code>lotri-motivation.Rmd</code></div>
@@ -148,7 +148,7 @@
 <div id="creating-lists-of-matricies-with-attached-properties" class="section level1">
 <h1 class="hasAnchor">
 <a href="#creating-lists-of-matricies-with-attached-properties" class="anchor"></a>Creating lists of matricies with attached properties</h1>
-<p><code>lotri</code> also allows lists of matrices to be created by conditioning on an <code>id</code> with the <code><a href="https://rdrr.io/r/base/Logic.html">|</a></code> syntax.</p>
+<p><code>lotri</code> also allows lists of matrices to be created by conditioning on an <code>id</code> with the <code>|</code> syntax.</p>
 <p>For example:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">mat</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/lotri.html">lotri</a></span><span class="op">(</span><span class="op">{</span>
@@ -190,7 +190,7 @@
 <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">mat</span><span class="op">$</span><span class="va">omegaIsChol</span><span class="op">)</span>
 <span class="co">#&gt; $id</span>
 <span class="co">#&gt; [1] FALSE</span></code></pre></div>
-<p>This gives a list of matrix(es) conditioned on the variable after the <code><a href="https://rdrr.io/r/base/Logic.html">|</a></code>. It also can add properties to each list that can be accessible after the list of matrices is returned, as shown in the above example. To do this, you simply have to enclose the properties after the conditional variable. That is <code>et1 ~ id(lower=3)</code>.</p>
+<p>This gives a list of matrix(es) conditioned on the variable after the <code>|</code>. It also can add properties to each list that can be accessible after the list of matrices is returned, as shown in the above example. To do this, you simply have to enclose the properties after the conditional variable. That is <code>et1 ~ id(lower=3)</code>.</p>
 <div id="combining-symmetric-named-matrices" class="section level2">
 <h2 class="hasAnchor">
 <a href="#combining-symmetric-named-matrices" class="anchor"></a>Combining symmetric named matrices</h2>
@@ -242,9 +242,9 @@
 
 <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">mb</span><span class="op">)</span>
 <span class="co">#&gt; Unit: microseconds</span>
-<span class="co">#&gt;                expr      min        lq       mean   median        uq      max</span>
-<span class="co">#&gt;      matf(testList) 1077.272 1094.1345 1191.72867 1109.700 1118.3720 8948.114</span>
-<span class="co">#&gt;  lotriMat(testList)    5.092    6.0625    8.61739    6.917   10.7285   23.663</span>
+<span class="co">#&gt;                expr      min        lq       mean    median       uq       max</span>
+<span class="co">#&gt;      matf(testList) 1379.775 1397.7220 1505.51343 1408.0325 1415.858 11192.522</span>
+<span class="co">#&gt;  lotriMat(testList)    6.813    7.6585   11.82602    8.5665   14.858    54.382</span>
 <span class="co">#&gt;  neval</span>
 <span class="co">#&gt;    100</span>
 <span class="co">#&gt;    100</span>

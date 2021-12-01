@@ -81,7 +81,7 @@ not be useful for external function calls." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">lotri</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.0</span>
       </span>
     </div>
 
@@ -182,51 +182,52 @@ you could use 'c(occ=3L)'</p></td>
     <p>Matthew Fidler</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>
-<span class='va'>omega</span> <span class='op'>&lt;-</span> <span class='fu'><a href='lotri.html'>lotri</a></span><span class='op'>(</span><span class='fu'><a href='lotri.html'>lotri</a></span><span class='op'>(</span><span class='va'>eta.Cl</span> <span class='op'>~</span> <span class='fl'>0.1</span>,
-                        <span class='va'>eta.Ka</span> <span class='op'>~</span> <span class='fl'>0.1</span><span class='op'>)</span> <span class='op'>|</span> <span class='fu'>id</span><span class='op'>(</span>nu<span class='op'>=</span><span class='fl'>100</span><span class='op'>)</span>,
-                  <span class='fu'><a href='lotri.html'>lotri</a></span><span class='op'>(</span><span class='va'>eye.Cl</span> <span class='op'>~</span> <span class='fl'>0.05</span>,
-                        <span class='va'>eye.Ka</span> <span class='op'>~</span> <span class='fl'>0.05</span><span class='op'>)</span> <span class='op'>|</span> <span class='fu'>eye</span><span class='op'>(</span>nu<span class='op'>=</span><span class='fl'>50</span><span class='op'>)</span>,
-                  <span class='fu'><a href='lotri.html'>lotri</a></span><span class='op'>(</span><span class='va'>iov.Cl</span> <span class='op'>~</span> <span class='fl'>0.01</span>,
-                        <span class='va'>iov.Ka</span> <span class='op'>~</span> <span class='fl'>0.01</span><span class='op'>)</span> <span class='op'>|</span> <span class='fu'>occ</span><span class='op'>(</span>nu<span class='op'>=</span><span class='fl'>200</span><span class='op'>)</span>,
-                  <span class='fu'><a href='lotri.html'>lotri</a></span><span class='op'>(</span><span class='va'>inv.Cl</span> <span class='op'>~</span> <span class='fl'>0.02</span>,
-                        <span class='va'>inv.Ka</span> <span class='op'>~</span> <span class='fl'>0.02</span><span class='op'>)</span> <span class='op'>|</span> <span class='fu'>inv</span><span class='op'>(</span>nu<span class='op'>=</span><span class='fl'>10</span><span class='op'>)</span><span class='op'>)</span>
-
-<span class='fu'>lotriSep</span><span class='op'>(</span><span class='va'>omega</span>, above<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>inv<span class='op'>=</span><span class='fl'>10L</span><span class='op'>)</span>, below<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>eye<span class='op'>=</span><span class='fl'>2L</span>, occ<span class='op'>=</span><span class='fl'>4L</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; $above
-#&gt; $inv
-#&gt;        inv.Cl inv.Ka
-#&gt; inv.Cl   0.02   0.00
-#&gt; inv.Ka   0.00   0.02
-#&gt; 
-#&gt; attr(,"format")
-#&gt; [1] "THETA[%d]"
-#&gt; attr(,"start")
-#&gt; [1] 1
-#&gt; Properties: nu, same 
-#&gt; 
-#&gt; $below
-#&gt; $id
-#&gt;        eta.Cl eta.Ka
-#&gt; eta.Cl    0.1    0.0
-#&gt; eta.Ka    0.0    0.1
-#&gt; 
-#&gt; $eye
-#&gt;        eye.Cl eye.Ka
-#&gt; eye.Cl   0.05   0.00
-#&gt; eye.Ka   0.00   0.05
-#&gt; 
-#&gt; $occ
-#&gt;        iov.Cl iov.Ka
-#&gt; iov.Cl   0.01   0.00
-#&gt; iov.Ka   0.00   0.01
-#&gt; 
-#&gt; attr(,"format")
-#&gt; [1] "ETA[%d]"
-#&gt; attr(,"start")
-#&gt; [1] 1
-#&gt; Properties: nu, same 
-#&gt; </div></pre>
+    <pre class="examples"><span class='r-in'></span>
+<span class='r-in'><span class='va'>omega</span> <span class='op'>&lt;-</span> <span class='fu'><a href='lotri.html'>lotri</a></span><span class='op'>(</span><span class='fu'><a href='lotri.html'>lotri</a></span><span class='op'>(</span><span class='va'>eta.Cl</span> <span class='op'>~</span> <span class='fl'>0.1</span>,</span>
+<span class='r-in'>                        <span class='va'>eta.Ka</span> <span class='op'>~</span> <span class='fl'>0.1</span><span class='op'>)</span> <span class='op'>|</span> <span class='fu'>id</span><span class='op'>(</span>nu<span class='op'>=</span><span class='fl'>100</span><span class='op'>)</span>,</span>
+<span class='r-in'>                  <span class='fu'><a href='lotri.html'>lotri</a></span><span class='op'>(</span><span class='va'>eye.Cl</span> <span class='op'>~</span> <span class='fl'>0.05</span>,</span>
+<span class='r-in'>                        <span class='va'>eye.Ka</span> <span class='op'>~</span> <span class='fl'>0.05</span><span class='op'>)</span> <span class='op'>|</span> <span class='fu'>eye</span><span class='op'>(</span>nu<span class='op'>=</span><span class='fl'>50</span><span class='op'>)</span>,</span>
+<span class='r-in'>                  <span class='fu'><a href='lotri.html'>lotri</a></span><span class='op'>(</span><span class='va'>iov.Cl</span> <span class='op'>~</span> <span class='fl'>0.01</span>,</span>
+<span class='r-in'>                        <span class='va'>iov.Ka</span> <span class='op'>~</span> <span class='fl'>0.01</span><span class='op'>)</span> <span class='op'>|</span> <span class='fu'>occ</span><span class='op'>(</span>nu<span class='op'>=</span><span class='fl'>200</span><span class='op'>)</span>,</span>
+<span class='r-in'>                  <span class='fu'><a href='lotri.html'>lotri</a></span><span class='op'>(</span><span class='va'>inv.Cl</span> <span class='op'>~</span> <span class='fl'>0.02</span>,</span>
+<span class='r-in'>                        <span class='va'>inv.Ka</span> <span class='op'>~</span> <span class='fl'>0.02</span><span class='op'>)</span> <span class='op'>|</span> <span class='fu'>inv</span><span class='op'>(</span>nu<span class='op'>=</span><span class='fl'>10</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='fu'>lotriSep</span><span class='op'>(</span><span class='va'>omega</span>, above<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>inv<span class='op'>=</span><span class='fl'>10L</span><span class='op'>)</span>, below<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>eye<span class='op'>=</span><span class='fl'>2L</span>, occ<span class='op'>=</span><span class='fl'>4L</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> $above</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> $inv</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>        inv.Cl inv.Ka</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> inv.Cl   0.02   0.00</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> inv.Ka   0.00   0.02</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> attr(,"format")</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "THETA[%d]"</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> attr(,"start")</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] 1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Properties: nu, same </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> $below</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> $id</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>        eta.Cl eta.Ka</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> eta.Cl    0.1    0.0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> eta.Ka    0.0    0.1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> $eye</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>        eye.Cl eye.Ka</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> eye.Cl   0.05   0.00</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> eye.Ka   0.00   0.05</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> $occ</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>        iov.Cl iov.Ka</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> iov.Cl   0.01   0.00</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> iov.Ka   0.00   0.01</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> attr(,"format")</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "ETA[%d]"</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> attr(,"start")</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] 1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Properties: nu, same </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

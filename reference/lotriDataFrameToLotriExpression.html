@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>As lower triangular matrix — as.lotri • lotri</title>
+<title>Convert a lotri data frame to a lotri expression — lotriDataFrameToLotriExpression • lotri</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,8 +46,8 @@
 
 
 
-<meta property="og:title" content="As lower triangular matrix — as.lotri" />
-<meta property="og:description" content="As lower triangular matrix" />
+<meta property="og:title" content="Convert a lotri data frame to a lotri expression — lotriDataFrameToLotriExpression" />
+<meta property="og:description" content="Convert a lotri data frame to a lotri expression" />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -131,51 +131,82 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>As lower triangular matrix</h1>
-    <small class="dont-index">Source: <a href='https://github.com/nlmixrdevelopment/lotri/blob/master/R/as.lotri.R'><code>R/as.lotri.R</code></a></small>
-    <div class="hidden name"><code>as.lotri.Rd</code></div>
+    <h1>Convert a lotri data frame to a lotri expression</h1>
+    <small class="dont-index">Source: <a href='https://github.com/nlmixrdevelopment/lotri/blob/master/R/as.expression.R'><code>R/as.expression.R</code></a></small>
+    <div class="hidden name"><code>lotriDataFrameToLotriExpression.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>As lower triangular matrix</p>
+    <p>Convert a lotri data frame to a lotri expression</p>
     </div>
 
-    <pre class="usage"><span class='fu'>as.lotri</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span>, default <span class='op'>=</span> <span class='st'>""</span><span class='op'>)</span>
-
-<span class='co'># S3 method for matrix</span>
-<span class='fu'>as.lotri</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span>, default <span class='op'>=</span> <span class='st'>""</span><span class='op'>)</span>
-
-<span class='co'># S3 method for data.frame</span>
-<span class='fu'>as.lotri</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span>, default <span class='op'>=</span> <span class='st'>""</span><span class='op'>)</span>
-
-<span class='co'># S3 method for default</span>
-<span class='fu'>as.lotri</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span>, default <span class='op'>=</span> <span class='st'>""</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>lotriDataFrameToLotriExpression</span><span class='op'>(</span><span class='va'>data</span>, useIni <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x</th>
-      <td><p>Matrix or other data frame</p></td>
+      <th>data</th>
+      <td><p>lotri data frame</p></td>
     </tr>
     <tr>
-      <th>...</th>
-      <td><p>Other factors</p></td>
-    </tr>
-    <tr>
-      <th>default</th>
-      <td><p>Is the default factor when no conditioning is
-implemented.</p></td>
+      <th>useIni</th>
+      <td><p>Use `ini` instead of `lotri` in the expression</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Lower triangular matrix</p>
+    <p>expression of the lotri syntax equivalent to the data.frame provided</p>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
-    <p>Matthew Fidler</p>
+    <p>Matthew L. Fidler</p>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><span class='r-in'></span>
+<span class='r-in'> <span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='lotri.html'>lotri</a></span><span class='op'>(</span><span class='op'>{</span></span>
+<span class='r-in'>  <span class='va'>tka</span> <span class='op'>&lt;-</span> <span class='fl'>0.45</span>; <span class='fu'>label</span><span class='op'>(</span><span class='st'>"Log Ka"</span><span class='op'>)</span></span>
+<span class='r-in'>  <span class='va'>tcl</span> <span class='op'>&lt;-</span> <span class='fl'>1</span>; <span class='fu'>label</span><span class='op'>(</span><span class='st'>"Log Cl"</span><span class='op'>)</span></span>
+<span class='r-in'>  <span class='va'>tv</span> <span class='op'>&lt;-</span> <span class='fl'>3.45</span>; <span class='fu'>label</span><span class='op'>(</span><span class='st'>"Log V"</span><span class='op'>)</span></span>
+<span class='r-in'>  <span class='va'>eta.ka</span> <span class='op'>~</span> <span class='fl'>0.6</span></span>
+<span class='r-in'>  <span class='va'>eta.cl</span> <span class='op'>~</span> <span class='fl'>0.3</span></span>
+<span class='r-in'>  <span class='va'>eta.v</span> <span class='op'>~</span> <span class='fl'>0.1</span></span>
+<span class='r-in'>  <span class='va'>add.err</span> <span class='op'>&lt;-</span> <span class='fl'>0.7</span></span>
+<span class='r-in'><span class='op'>}</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='va'>df</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/as.data.frame.html'>as.data.frame</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='fu'>lotriDataFrameToLotriExpression</span><span class='op'>(</span><span class='va'>df</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> lotri({</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>     tka &lt;- 0.45</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>     label("Log Ka")</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>     tcl &lt;- 1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>     label("Log Cl")</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>     tv &lt;- 3.45</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>     label("Log V")</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>     add.err &lt;- 0.7</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>     eta.ka ~ 0.6</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>     eta.cl ~ 0.3</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>     eta.v ~ 0.1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> })</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># You may also call as.expression directly from the lotri object</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/expression.html'>as.expression</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> lotri({</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>     tka &lt;- 0.45</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>     label("Log Ka")</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>     tcl &lt;- 1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>     label("Log Cl")</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>     tv &lt;- 3.45</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>     label("Log V")</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>     add.err &lt;- 0.7</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>     eta.ka ~ 0.6</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>     eta.cl ~ 0.3</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>     eta.v ~ 0.1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> })</span>
+<span class='r-in'></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

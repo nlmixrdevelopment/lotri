@@ -81,7 +81,7 @@ symmetric matrices." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">lotri</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.0</span>
       </span>
     </div>
 
@@ -173,84 +173,89 @@ should start.</p></td>
     <p>Matthew Fidler</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>
-<span class='va'>testList</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='fu'><a href='lotri.html'>lotri</a></span><span class='op'>(</span><span class='op'>{</span><span class='va'>et2</span> <span class='op'>+</span> <span class='va'>et3</span> <span class='op'>+</span> <span class='va'>et4</span> <span class='op'>~</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>40</span>,
-                           <span class='fl'>0.1</span>, <span class='fl'>20</span>,
-                           <span class='fl'>0.1</span>, <span class='fl'>0.1</span>, <span class='fl'>30</span><span class='op'>)</span><span class='op'>}</span><span class='op'>)</span>,
-                 <span class='fu'><a href='lotri.html'>lotri</a></span><span class='op'>(</span><span class='va'>et5</span> <span class='op'>~</span> <span class='fl'>6</span><span class='op'>)</span><span class='op'>)</span>
-
-<span class='va'>testList</span>
-</div><div class='output co'>#&gt; [[1]]
-#&gt;      et2  et3  et4
-#&gt; et2 40.0  0.1  0.1
-#&gt; et3  0.1 20.0  0.1
-#&gt; et4  0.1  0.1 30.0
-#&gt; 
-#&gt; [[2]]
-#&gt;     et5
-#&gt; et5   6
-#&gt; </div><div class='input'>
-<span class='fu'>lotriMat</span><span class='op'>(</span><span class='va'>testList</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;      et2  et3  et4 et5
-#&gt; et2 40.0  0.1  0.1   0
-#&gt; et3  0.1 20.0  0.1   0
-#&gt; et4  0.1  0.1 30.0   0
-#&gt; et5  0.0  0.0  0.0   6</div><div class='input'>
-
-<span class='co'># Another option is to repeat a matrix a number of times.  This</span>
-<span class='co'># can be done with list(matrix, # times to repeat).</span>
-
-<span class='co'># In the example below, the first matrix is repeated 3 times</span>
-<span class='va'>testList</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='fu'><a href='lotri.html'>lotri</a></span><span class='op'>(</span><span class='op'>{</span><span class='va'>et2</span> <span class='op'>+</span> <span class='va'>et3</span> <span class='op'>+</span> <span class='va'>et4</span> <span class='op'>~</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>40</span>,
-                           <span class='fl'>0.1</span>, <span class='fl'>20</span>,
-                           <span class='fl'>0.1</span>, <span class='fl'>0.1</span>, <span class='fl'>30</span><span class='op'>)</span><span class='op'>}</span><span class='op'>)</span>, <span class='fl'>3</span><span class='op'>)</span>,
-                 <span class='fu'><a href='lotri.html'>lotri</a></span><span class='op'>(</span><span class='va'>et5</span> <span class='op'>~</span> <span class='fl'>6</span><span class='op'>)</span><span class='op'>)</span>
-
-<span class='fu'>lotriMat</span><span class='op'>(</span><span class='va'>testList</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;      et2  et3  et4  et2  et3  et4  et2  et3  et4 et5
-#&gt; et2 40.0  0.1  0.1  0.0  0.0  0.0  0.0  0.0  0.0   0
-#&gt; et3  0.1 20.0  0.1  0.0  0.0  0.0  0.0  0.0  0.0   0
-#&gt; et4  0.1  0.1 30.0  0.0  0.0  0.0  0.0  0.0  0.0   0
-#&gt; et2  0.0  0.0  0.0 40.0  0.1  0.1  0.0  0.0  0.0   0
-#&gt; et3  0.0  0.0  0.0  0.1 20.0  0.1  0.0  0.0  0.0   0
-#&gt; et4  0.0  0.0  0.0  0.1  0.1 30.0  0.0  0.0  0.0   0
-#&gt; et2  0.0  0.0  0.0  0.0  0.0  0.0 40.0  0.1  0.1   0
-#&gt; et3  0.0  0.0  0.0  0.0  0.0  0.0  0.1 20.0  0.1   0
-#&gt; et4  0.0  0.0  0.0  0.0  0.0  0.0  0.1  0.1 30.0   0
-#&gt; et5  0.0  0.0  0.0  0.0  0.0  0.0  0.0  0.0  0.0   6</div><div class='input'>
-<span class='co'># Notice that the dimension names `et2`, `et3` and `et4` are</span>
-<span class='co'># repeated.</span>
-
-<span class='co'># Another option is to name the dimensions.  For example it could</span>
-<span class='co'># be `ETA[1]`, `ETA[2]`, etc by using the 'format' option:</span>
-
-<span class='fu'>lotriMat</span><span class='op'>(</span><span class='va'>testList</span>, <span class='st'>"ETA[%d]"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;        ETA[1] ETA[2] ETA[3] ETA[4] ETA[5] ETA[6] ETA[7] ETA[8] ETA[9] et5
-#&gt; ETA[1]   40.0    0.1    0.1    0.0    0.0    0.0    0.0    0.0    0.0   0
-#&gt; ETA[2]    0.1   20.0    0.1    0.0    0.0    0.0    0.0    0.0    0.0   0
-#&gt; ETA[3]    0.1    0.1   30.0    0.0    0.0    0.0    0.0    0.0    0.0   0
-#&gt; ETA[4]    0.0    0.0    0.0   40.0    0.1    0.1    0.0    0.0    0.0   0
-#&gt; ETA[5]    0.0    0.0    0.0    0.1   20.0    0.1    0.0    0.0    0.0   0
-#&gt; ETA[6]    0.0    0.0    0.0    0.1    0.1   30.0    0.0    0.0    0.0   0
-#&gt; ETA[7]    0.0    0.0    0.0    0.0    0.0    0.0   40.0    0.1    0.1   0
-#&gt; ETA[8]    0.0    0.0    0.0    0.0    0.0    0.0    0.1   20.0    0.1   0
-#&gt; ETA[9]    0.0    0.0    0.0    0.0    0.0    0.0    0.1    0.1   30.0   0
-#&gt; et5       0.0    0.0    0.0    0.0    0.0    0.0    0.0    0.0    0.0   6</div><div class='input'>
-<span class='co'># Or could start with ETA[2]:</span>
-
-<span class='fu'>lotriMat</span><span class='op'>(</span><span class='va'>testList</span>, <span class='st'>"ETA[%d]"</span>, <span class='fl'>2</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;         ETA[2] ETA[3] ETA[4] ETA[5] ETA[6] ETA[7] ETA[8] ETA[9] ETA[10] et5
-#&gt; ETA[2]    40.0    0.1    0.1    0.0    0.0    0.0    0.0    0.0     0.0   0
-#&gt; ETA[3]     0.1   20.0    0.1    0.0    0.0    0.0    0.0    0.0     0.0   0
-#&gt; ETA[4]     0.1    0.1   30.0    0.0    0.0    0.0    0.0    0.0     0.0   0
-#&gt; ETA[5]     0.0    0.0    0.0   40.0    0.1    0.1    0.0    0.0     0.0   0
-#&gt; ETA[6]     0.0    0.0    0.0    0.1   20.0    0.1    0.0    0.0     0.0   0
-#&gt; ETA[7]     0.0    0.0    0.0    0.1    0.1   30.0    0.0    0.0     0.0   0
-#&gt; ETA[8]     0.0    0.0    0.0    0.0    0.0    0.0   40.0    0.1     0.1   0
-#&gt; ETA[9]     0.0    0.0    0.0    0.0    0.0    0.0    0.1   20.0     0.1   0
-#&gt; ETA[10]    0.0    0.0    0.0    0.0    0.0    0.0    0.1    0.1    30.0   0
-#&gt; et5        0.0    0.0    0.0    0.0    0.0    0.0    0.0    0.0     0.0   6</div><div class='input'>
-</div></pre>
+    <pre class="examples"><span class='r-in'></span>
+<span class='r-in'><span class='va'>testList</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='fu'><a href='lotri.html'>lotri</a></span><span class='op'>(</span><span class='op'>{</span><span class='va'>et2</span> <span class='op'>+</span> <span class='va'>et3</span> <span class='op'>+</span> <span class='va'>et4</span> <span class='op'>~</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>40</span>,</span>
+<span class='r-in'>                           <span class='fl'>0.1</span>, <span class='fl'>20</span>,</span>
+<span class='r-in'>                           <span class='fl'>0.1</span>, <span class='fl'>0.1</span>, <span class='fl'>30</span><span class='op'>)</span><span class='op'>}</span><span class='op'>)</span>,</span>
+<span class='r-in'>                 <span class='fu'><a href='lotri.html'>lotri</a></span><span class='op'>(</span><span class='va'>et5</span> <span class='op'>~</span> <span class='fl'>6</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='va'>testList</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [[1]]</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>      et2  et3  et4</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> et2 40.0  0.1  0.1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> et3  0.1 20.0  0.1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> et4  0.1  0.1 30.0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [[2]]</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>     et5</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> et5   6</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-in'></span>
+<span class='r-in'><span class='fu'>lotriMat</span><span class='op'>(</span><span class='va'>testList</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>      et2  et3  et4 et5</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> et2 40.0  0.1  0.1   0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> et3  0.1 20.0  0.1   0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> et4  0.1  0.1 30.0   0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> et5  0.0  0.0  0.0   6</span>
+<span class='r-in'></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># Another option is to repeat a matrix a number of times.  This</span></span>
+<span class='r-in'><span class='co'># can be done with list(matrix, # times to repeat).</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># In the example below, the first matrix is repeated 3 times</span></span>
+<span class='r-in'><span class='va'>testList</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='fu'><a href='lotri.html'>lotri</a></span><span class='op'>(</span><span class='op'>{</span><span class='va'>et2</span> <span class='op'>+</span> <span class='va'>et3</span> <span class='op'>+</span> <span class='va'>et4</span> <span class='op'>~</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>40</span>,</span>
+<span class='r-in'>                           <span class='fl'>0.1</span>, <span class='fl'>20</span>,</span>
+<span class='r-in'>                           <span class='fl'>0.1</span>, <span class='fl'>0.1</span>, <span class='fl'>30</span><span class='op'>)</span><span class='op'>}</span><span class='op'>)</span>, <span class='fl'>3</span><span class='op'>)</span>,</span>
+<span class='r-in'>                 <span class='fu'><a href='lotri.html'>lotri</a></span><span class='op'>(</span><span class='va'>et5</span> <span class='op'>~</span> <span class='fl'>6</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='fu'>lotriMat</span><span class='op'>(</span><span class='va'>testList</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>      et2  et3  et4  et2  et3  et4  et2  et3  et4 et5</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> et2 40.0  0.1  0.1  0.0  0.0  0.0  0.0  0.0  0.0   0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> et3  0.1 20.0  0.1  0.0  0.0  0.0  0.0  0.0  0.0   0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> et4  0.1  0.1 30.0  0.0  0.0  0.0  0.0  0.0  0.0   0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> et2  0.0  0.0  0.0 40.0  0.1  0.1  0.0  0.0  0.0   0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> et3  0.0  0.0  0.0  0.1 20.0  0.1  0.0  0.0  0.0   0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> et4  0.0  0.0  0.0  0.1  0.1 30.0  0.0  0.0  0.0   0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> et2  0.0  0.0  0.0  0.0  0.0  0.0 40.0  0.1  0.1   0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> et3  0.0  0.0  0.0  0.0  0.0  0.0  0.1 20.0  0.1   0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> et4  0.0  0.0  0.0  0.0  0.0  0.0  0.1  0.1 30.0   0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> et5  0.0  0.0  0.0  0.0  0.0  0.0  0.0  0.0  0.0   6</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># Notice that the dimension names `et2`, `et3` and `et4` are</span></span>
+<span class='r-in'><span class='co'># repeated.</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># Another option is to name the dimensions.  For example it could</span></span>
+<span class='r-in'><span class='co'># be `ETA[1]`, `ETA[2]`, etc by using the 'format' option:</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='fu'>lotriMat</span><span class='op'>(</span><span class='va'>testList</span>, <span class='st'>"ETA[%d]"</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>        ETA[1] ETA[2] ETA[3] ETA[4] ETA[5] ETA[6] ETA[7] ETA[8] ETA[9] et5</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ETA[1]   40.0    0.1    0.1    0.0    0.0    0.0    0.0    0.0    0.0   0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ETA[2]    0.1   20.0    0.1    0.0    0.0    0.0    0.0    0.0    0.0   0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ETA[3]    0.1    0.1   30.0    0.0    0.0    0.0    0.0    0.0    0.0   0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ETA[4]    0.0    0.0    0.0   40.0    0.1    0.1    0.0    0.0    0.0   0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ETA[5]    0.0    0.0    0.0    0.1   20.0    0.1    0.0    0.0    0.0   0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ETA[6]    0.0    0.0    0.0    0.1    0.1   30.0    0.0    0.0    0.0   0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ETA[7]    0.0    0.0    0.0    0.0    0.0    0.0   40.0    0.1    0.1   0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ETA[8]    0.0    0.0    0.0    0.0    0.0    0.0    0.1   20.0    0.1   0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ETA[9]    0.0    0.0    0.0    0.0    0.0    0.0    0.1    0.1   30.0   0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> et5       0.0    0.0    0.0    0.0    0.0    0.0    0.0    0.0    0.0   6</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># Or could start with ETA[2]:</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='fu'>lotriMat</span><span class='op'>(</span><span class='va'>testList</span>, <span class='st'>"ETA[%d]"</span>, <span class='fl'>2</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>         ETA[2] ETA[3] ETA[4] ETA[5] ETA[6] ETA[7] ETA[8] ETA[9] ETA[10] et5</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ETA[2]    40.0    0.1    0.1    0.0    0.0    0.0    0.0    0.0     0.0   0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ETA[3]     0.1   20.0    0.1    0.0    0.0    0.0    0.0    0.0     0.0   0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ETA[4]     0.1    0.1   30.0    0.0    0.0    0.0    0.0    0.0     0.0   0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ETA[5]     0.0    0.0    0.0   40.0    0.1    0.1    0.0    0.0     0.0   0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ETA[6]     0.0    0.0    0.0    0.1   20.0    0.1    0.0    0.0     0.0   0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ETA[7]     0.0    0.0    0.0    0.1    0.1   30.0    0.0    0.0     0.0   0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ETA[8]     0.0    0.0    0.0    0.0    0.0    0.0   40.0    0.1     0.1   0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ETA[9]     0.0    0.0    0.0    0.0    0.0    0.0    0.1   20.0     0.1   0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ETA[10]    0.0    0.0    0.0    0.0    0.0    0.0    0.1    0.1    30.0   0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> et5        0.0    0.0    0.0    0.0    0.0    0.0    0.0    0.0     0.0   6</span>
+<span class='r-in'></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

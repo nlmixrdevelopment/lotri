@@ -41,7 +41,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">lotri</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.0</span>
       </span>
     </div>
 
@@ -190,7 +190,7 @@
 <div id="creating-lists-of-matricies-with-attached-properties" class="section level1">
 <h1 class="hasAnchor">
 <a href="#creating-lists-of-matricies-with-attached-properties" class="anchor"></a>Creating lists of matricies with attached properties</h1>
-<p><code>lotri</code> also allows lists of matrices to be created by conditioning on an <code>id</code> with the <code><a href="https://rdrr.io/r/base/Logic.html">|</a></code> syntax.</p>
+<p><code>lotri</code> also allows lists of matrices to be created by conditioning on an <code>id</code> with the <code>|</code> syntax.</p>
 <p>For example:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">mat</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/lotri.html">lotri</a></span><span class="op">(</span><span class="op">{</span>
@@ -232,7 +232,7 @@
 <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">mat</span><span class="op">$</span><span class="va">omegaIsChol</span><span class="op">)</span>
 <span class="co">#&gt; $id</span>
 <span class="co">#&gt; [1] FALSE</span></code></pre></div>
-<p>This gives a list of matrix(es) conditioned on the variable after the <code><a href="https://rdrr.io/r/base/Logic.html">|</a></code>. It also can add properties to each list that can be accessible after the list of matrices is returned, as shown in the above example. To do this, you simply have to enclose the properties after the conditional variable. That is <code>et1 ~ id(lower=3)</code>.</p>
+<p>This gives a list of matrix(es) conditioned on the variable after the <code>|</code>. It also can add properties to each list that can be accessible after the list of matrices is returned, as shown in the above example. To do this, you simply have to enclose the properties after the conditional variable. That is <code>et1 ~ id(lower=3)</code>.</p>
 <div id="combining-symmetric-named-matrices" class="section level2">
 <h2 class="hasAnchor">
 <a href="#combining-symmetric-named-matrices" class="anchor"></a>Combining symmetric (named) matrices</h2>
@@ -341,7 +341,7 @@
 <div id="new-features" class="section level2">
 <h2 class="hasAnchor">
 <a href="#new-features" class="anchor"></a>New features</h2>
-<p>A new feature is the ability to condition on variables by <code><a href="https://rdrr.io/r/base/Logic.html">|</a></code>. This will be useful when simulating nested random effects using the upcoming <code>RxODE</code></p>
+<p>A new feature is the ability to condition on variables by <code>|</code>. This will be useful when simulating nested random effects using the upcoming <code>RxODE</code></p>
 </div>
 </div>
 
